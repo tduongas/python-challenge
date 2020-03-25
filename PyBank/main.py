@@ -1,4 +1,3 @@
-# First we'll import the os module
 # This will allow us to create file paths across operating systems
 import os
 
@@ -41,15 +40,19 @@ for i in range(len(profit_loss) - 1):
     change_per_month = int(profit_loss[i+1]) - int(profit_loss[i])
     count_profit_loss_changes = count_profit_loss_changes + 1
 
+    # placeholder for greatest increase in profit
     if change_per_month > max_increase_profit:    
         max_increase_profit = change_per_month
         max_increase_profit_date = month[i+1]
        
+    # placeholder for greatest decrease in profit
     if change_per_month < greatest_loss_in_profit:
         greatest_loss_in_profit = change_per_month
         greatest_loss_in_profit_date = month[i+1]
 
 
+
+# print to terminal
 print("\nFinancial Analysis")
 print("----------------------------")
 print(f"Total Months: {total_number_months}")
@@ -59,10 +62,11 @@ print(f"Greatest Increase in Profits: {max_increase_profit_date}: (${max_increas
 print(f"Greatest Decrease in Profits: {greatest_loss_in_profit_date}: (${greatest_loss_in_profit})\n" )
     
 
-# os independent function to get path of Resources
+
+# prepare to write to textFile.txt
 text_path = os.path.join('', 'Resources', 'textFile.txt')
 
-# write data in a file. 
+# write data into a file. 
 text_file = open(text_path,"w") 
 text  = "Financial Analysis\n"
 text += "----------------------------\n"
@@ -73,4 +77,4 @@ text += "Greatest Increase in Profits: " + str(max_increase_profit_date) + ": ($
 text += "Greatest Decrease in Profits: " + str(greatest_loss_in_profit_date) + ": ($" + str(greatest_loss_in_profit) + ")\n"
   
 text_file.writelines(text) 
-text_file.close() #to change file access modes 
+text_file.close() # close the file as we are done
